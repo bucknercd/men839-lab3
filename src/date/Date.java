@@ -26,9 +26,10 @@ public class Date implements Comparable<Date> {
 	 * also, replaces the months with the full month name and creates a day as int value
 	 */
 	public Date(String line) {
+	        // parses entire line, 3 tokens are assigned to vars
 		mySplit(line);
 		fixMonth(month);
-		fixDay(day);
+		fixday(day);
 		fixYear(year);
 	}
 	/**
