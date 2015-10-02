@@ -1,4 +1,4 @@
-.project
-.settings
+/bin/
+.git
 .classpath
-bin
+.project

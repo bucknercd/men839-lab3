@@ -25,25 +25,28 @@ public class Date implements Comparable<Date> {
 	 * Date constructor which parses the line and assigns date month year to string vars
 	 * also, replaces the months with the full month name and creates a day as int value
 	 */
-	public Date(String line) {
-	        // parses entire line, 3 tokens are assigned to vars
-		mySplit(line);
-		fixMonth(month);
-		fixday(day);
-		fixYear(year);
+	public Date(String line) throws IllegalArgumentException {
+			mySplit(line);
+			fixMonth(month);
+			fixDay(day);
+			fixYear(year);
 	}
 	/**
 	 * 
 	 * @param line
 	 * parses line into 3 parts: month day year
 	 */
-	public void mySplit(String line) {
+	public void mySplit(String line) throws IllegalArgumentException{
 		// splits string into 3 tokens
 		String[] parts = line.split(" ");
 		// assigns each token to a variable
-		this.month = parts[0];
-		this.day = parts[1];
-		this.year = parts[2];		
+		if (parts.length != 3) {
+			throw new IllegalArgumentException();
+		}
+
+			this.month = parts[0];
+			this.day = parts[1];
+			this.year = parts[2];
 	}
 	/**
 	 * 
@@ -53,7 +56,7 @@ public class Date implements Comparable<Date> {
 	public void fixDay(String day) {
 		// if the last char of the 'day' token is a comma, remove it
 		if (day.charAt(day.length() - 1) == ',' ) {
-			day = day.substring(0, day.length() - 1);
+				day = day.substring(0, day.length() - 1);
 		}
 		// cast 'day' to an int
 		this.dayInt = Integer.parseInt(day);
@@ -244,7 +247,7 @@ public class Date implements Comparable<Date> {
 	 * overrides toString method to produce desired date output
 	 */
 	public String toString() {
-		String output = "Date: "+month+" "+" "+day+" "+year;
+		String output = "Date: "+month+" "+day+" "+year;
 		return output;
 	}
 } // end class Date

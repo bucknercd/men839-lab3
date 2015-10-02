@@ -32,8 +32,14 @@ public class Lab3 {
 		while (n.hasNextLine()) {
 			// create String 'line' by reading in the entire line
 			String line = n.nextLine();
+			Date date;
 			// create a Date object using 'line' as a parameter
-			Date date = new Date(line);
+			try {
+				date = new Date(line);
+			} catch (IllegalArgumentException e) {
+				System.out.println("Date: Invalid Date");
+				continue;
+			}
 			// check to make sure date is valid
 			if (date.isValid()) 
 			{ // date is valid,
